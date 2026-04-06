@@ -1,0 +1,264 @@
+@model AMS.Models.AccountViewModels.RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="meta-auth-container">
+    <div class="meta-auth-card">
+        <!-- Logo Section -->
+        <div class="auth-logo">
+            <img src="~/images/29logo.png" alt="29 Logo" />
+        </div>
+
+        <!-- Header -->
+        <div class="auth-header">
+            <h1>Create Account</h1>
+            <p>Join 29 Asset Management System</p>
+        </div>
+
+        <!-- Register Form -->
+        <form id="frmRegister" class="meta-auth-form">
+            <input type="hidden" asp-for="Longitude" id="Longitude" />
+            <input type="hidden" asp-for="Latitude" id="Latitude" />
+
+            <div class="form-row">
+                <div class="form-group-meta half">
+                    <label>First Name</label>
+                    <input asp-for="FirstName" type="text" class="meta-input" placeholder="First name" />
+                    <span asp-validation-for="FirstName" class="error-text"></span>
+                </div>
+                
+                <div class="form-group-meta half">
+                    <label>Last Name</label>
+                    <input asp-for="LastName" type="text" class="meta-input" placeholder="Last name" />
+                    <span asp-validation-for="LastName" class="error-text"></span>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group-meta half">
+                    <label>Phone Number</label>
+                    <input asp-for="PhoneNumber" type="text" class="meta-input" placeholder="Phone number" />
+                    <span asp-validation-for="PhoneNumber" class="error-text"></span>
+                </div>
+                
+                <div class="form-group-meta half">
+                    <label>Email</label>
+                    <input asp-for="Email" type="email" class="meta-input" placeholder="Email address" />
+                    <span asp-validation-for="Email" class="error-text"></span>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group-meta">
+                    <label>Address</label>
+                    <input asp-for="Address" type="text" class="meta-input" placeholder="Address" />
+                    <span asp-validation-for="Address" class="error-text"></span>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group-meta">
+                    <label>Country</label>
+                    <input asp-for="Country" type="text" class="meta-input" placeholder="Country" />
+                    <span asp-validation-for="Country" class="error-text"></span>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group-meta half">
+                    <label>Password</label>
+                    <input asp-for="Password" type="password" class="meta-input" placeholder="Password" />
+                    <span asp-validation-for="Password" class="error-text"></span>
+                </div>
+                
+                <div class="form-group-meta half">
+                    <label>Confirm Password</label>
+                    <input asp-for="ConfirmPassword" type="password" class="meta-input" placeholder="Confirm password" />
+                    <span asp-validation-for="ConfirmPassword" class="error-text"></span>
+                </div>
+            </div>
+
+            <button type="submit" class="meta-btn-primary">Create Account</button>
+        </form>
+
+        <!-- Footer Links -->
+        <div class="auth-footer">
+            <p>Already have an account? <a href="/Account/Login">Sign in</a></p>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Meta-Inspired Auth Container */
+.meta-auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f2f5;
+    padding: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.meta-auth-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.auth-logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.auth-logo img {
+    width: 80px;
+    height: auto;
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.auth-header h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1c1e21;
+    margin: 0 0 8px 0;
+}
+
+.auth-header p {
+    font-size: 15px;
+    color: #65676b;
+    margin: 0;
+}
+
+.meta-auth-form {
+    margin-bottom: 24px;
+}
+
+.form-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.form-group-meta {
+    flex: 1;
+}
+
+.form-group-meta.half {
+    flex: 1;
+}
+
+.form-group-meta label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #1c1e21;
+    margin-bottom: 6px;
+}
+
+.meta-input {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 15px;
+    border: 1px solid #dddfe2;
+    border-radius: 6px;
+    background: white;
+    color: #1c1e21;
+    transition: all 0.2s ease;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+.meta-input:focus {
+    outline: none;
+    border-color: #0866FF;
+    box-shadow: 0 0 0 2px rgba(8, 102, 255, 0.1);
+}
+
+.meta-input::placeholder {
+    color: #8a8d91;
+}
+
+.error-text {
+    display: block;
+    font-size: 13px;
+    color: #e41e3f;
+    margin-top: 4px;
+}
+
+.meta-btn-primary {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    background: #0866FF;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 8px;
+}
+
+.meta-btn-primary:hover {
+    background: #0552CC;
+}
+
+.meta-btn-primary:active {
+    transform: scale(0.98);
+}
+
+.auth-footer {
+    text-align: center;
+    padding-top: 24px;
+    border-top: 1px solid #e4e6eb;
+}
+
+.auth-footer p {
+    font-size: 14px;
+    color: #65676b;
+    margin: 0;
+}
+
+.auth-footer a {
+    color: #0866FF;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+@@media (max-width: 768px) {
+    .meta-auth-card {
+        padding: 24px;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .form-group-meta.half {
+        width: 100%;
+    }
+}
+</style>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/sweetalert/sweetalert.min.js"></script>
+    <script src="~/js/Account/Register.js"></script>
+}

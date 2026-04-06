@@ -1,0 +1,46 @@
+# Remote Deployment Commands for root@167.71.223.157
+
+# 1. Connect to server
+ssh root@167.71.223.157
+
+# 2. Create deployment directory
+mkdir -p /var/www/fixedasset
+cd /var/www/fixedasset
+
+# 3. Upload deployment package (from local machine)
+scp fixedasset-deployment.tar.gz root@167.71.223.157:/var/www/fixedasset/
+
+# 4. Extract deployment package (on server)
+cd /var/www/fixedasset
+tar -xzf fixedasset-deployment.tar.gz
+rm fixedasset-deployment.tar.gz
+
+# 5. Run server setup (first time only)
+./setup-server.sh
+
+# 6. Setup database (first time only)
+./setup-database.sh
+
+# 7. Update .env file with production values
+nano .env
+
+# 8. Deploy application
+./deploy-app.sh
+
+# 9. Check status
+systemctl status ams
+systemctl status nginx
+
+# 10. Check application
+curl -f http://localhost:5000/health
+
+# 11. Get SSL certificate (after DNS is configured)
+certbot --nginx -d fixedasset.29jewellery.com -d www.fixedasset.29jewellery.com
+
+# 12. Restart services
+systemctl restart ams
+systemctl restart nginx
+
+# 13. Monitor logs
+journalctl -u ams -f
+tail -f /var/log/nginx/fixedasset.access.log
